@@ -1,0 +1,11 @@
+name = "worker-rust"
+main = "build/worker/shim.mjs"
+compatibility_date = "2023-03-22"
+
+[build]
+command = "cargo install -q worker-build && worker-build --release"
+
+[[d1_databases]]
+binding = "DB" # i.e. available in your Worker on env.DB
+database_name = "bl0g"
+database_id = "1ace3222-c466-42f0-915b-0b620fbdf31f"
