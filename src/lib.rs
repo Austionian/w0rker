@@ -26,7 +26,7 @@ pub async fn main(request: Request, env: Env, _ctx: Context) -> Result<Response>
             match key {
                 Ok(Some(key)) => {
                     if key != ctx.env.secret("API_TOKEN").unwrap().to_string() {
-                        return Response::error("Unauthorized", 403);
+                        return Response::error("Unauthorized", 401);
                     }
                     let id = ctx.param("id").unwrap();
                     let d1 = ctx.env.d1("DB")?;
@@ -39,7 +39,7 @@ pub async fn main(request: Request, env: Env, _ctx: Context) -> Result<Response>
                         Err(_) => Response::error("Row not updated", 401),
                     }
                 }
-                Ok(None) | Err(_) => Response::error("Unauthorized", 403),
+                Ok(None) | Err(_) => Response::error("Unauthorized", 401),
             }
         })
         .post_async("/new/:id", |request, ctx| async move {
@@ -47,7 +47,7 @@ pub async fn main(request: Request, env: Env, _ctx: Context) -> Result<Response>
             match key {
                 Ok(Some(key)) => {
                     if key != ctx.env.secret("API_TOKEN").unwrap().to_string() {
-                        return Response::error("Unauthorized", 403);
+                        return Response::error("Unauthorized", 401);
                     }
                     let id = ctx.param("id").unwrap();
                     let d1 = ctx.env.d1("DB")?;
@@ -59,7 +59,7 @@ pub async fn main(request: Request, env: Env, _ctx: Context) -> Result<Response>
                         Err(_) => Response::error("Row not created.", 500),
                     }
                 }
-                Ok(None) | Err(_) => Response::error("Unauthorized", 403),
+                Ok(None) | Err(_) => Response::error("Unauthorized", 401),
             }
         })
         .run(request, env)
