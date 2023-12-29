@@ -1,12 +1,12 @@
 {
-	"name": "template-worker-rust",
+	"name": "w0rker",
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
-		"deploy": "wrangler deploy",
+        "deploy": "wrangler deploy",
 		"dev": "wrangler dev --local"
 	},
 	"devDependencies": {
-		"wrangler": "^2.13.0"
+		"wrangler": "^3"
 	}
 }
