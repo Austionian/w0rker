@@ -2,6 +2,9 @@
 name = "w0rker"
 version = "0.1.0"
 edition = "2021"
+description = "A serverless router to create, update and read values from a D1 db."
+repository = "https://github.com/Austionian/w0rker"
+license = "MIT OR Apache-2.0"
 
 # https://github.com/rustwasm/wasm-pack/issues/1247
 [package.metadata.wasm-pack.profile.release]
